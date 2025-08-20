@@ -1,0 +1,21 @@
+module srff_test; 
+reg S,R,Clk;
+wire Q,Qm;
+srff inst(S,R,Clk,Q,Qm);
+
+initial
+begin
+Clk=1'b0;
+end
+  
+always
+	#10 Clk=~Clk;
+
+initial
+begin
+	#10 S=1'b0; R=1'b0;
+	#10 S=1'b0; R=1'b1;
+	#10 S=1'b1; R=1'b0; 
+	#50 $finish;
+end
+endmodule
