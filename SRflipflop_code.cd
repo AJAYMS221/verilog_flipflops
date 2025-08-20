@@ -1,0 +1,26 @@
+module srff (S,R,Clk,Q,Qm); 
+input S,R,Clk;
+output reg Q=1'b1, Qm=1'b0;
+always @(posedge Clk) 
+begin
+
+if(S==0 && R==0)
+begin
+	Qm=Qm;
+	Q=~Qm;
+end
+
+else if (S==1 && R==0)
+begin
+Qm=1;
+Q=~Qm;
+end
+
+else if (S==0 && R==1)
+begin
+Qm=0;
+Q=~Qm;
+end
+
+end
+endmodule
