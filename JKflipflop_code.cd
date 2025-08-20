@@ -1,0 +1,33 @@
+module jkff(J,K,Clk,Q,Qm);
+input J,K,Clk;
+output reg Q=1'b1, Qm=1'b0;
+
+always @(posedge Clk) 
+begin
+
+if(J==0 && K==0)
+begin
+    Qm=Qm;
+    Q=~Qm;
+end
+
+else if (J==1 && K==0)
+begin
+    Qm=1;
+    Q=~Qm;
+end
+
+else if (J==0 && K==1)
+begin
+    Qm=0;
+    Q=~Qm;
+end
+
+else if (J==1 && K==1)
+begin
+    Qm=~Qm;
+    Q=-Qm;
+end
+
+end
+endmodule
