@@ -1,0 +1,22 @@
+module DFF(Q,Qbar,D,Clk,Reset);
+
+input D,Clk,Reset;
+output reg Q;
+output reg Qbar;
+
+always @(posedge Clk)
+begin
+if (Reset==1'b1)
+begin
+Q<=1'b0;
+Qbar=~Q;
+end
+
+else
+begin
+Q<=D;
+Qbar=-Q;
+end
+
+end
+endmodule
