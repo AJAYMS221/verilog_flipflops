@@ -1,0 +1,17 @@
+module DFF_test;
+reg Clk,D,Reset;
+wire Q,Qbar;
+DFF inst(Q,Qbar,D,Clk,Reset);
+initial
+Clk=1'b0;
+always
+	#10 Clk=~Clk;
+initial
+begin
+	Reset=1'b1; D=1'b0;
+    #10 Reset=1'b0;
+    #10 D=1'b1;
+    #10 D=1'b0;
+    #50 $finish;
+end 
+endmodule
